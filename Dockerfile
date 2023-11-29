@@ -7,7 +7,7 @@ COPY src ./src
 
 RUN mvn clean package
 
-FROM openjdk:17-jre-slim
+FROM ubuntu/jre:17-22.04_edge
 
 WORKDIR /app
 
