@@ -1,18 +1,19 @@
 FROM maven:3.8.4-openjdk-17 AS builder
 
+
 WORKDIR /app
 
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
-FROM ubuntu/jre:17-22.04_edge
+FROM eclipse-temurin:17.0.9_9-jre-ubi9-minimal
 
 WORKDIR /app
 
-COPY --from=builder /app/target/kaskos-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=builder /app/target/kaskos-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
