@@ -9,6 +9,8 @@ public record HistoryResponse(
         UUID id,
         String name,
         String email,
+
+        Integer nominal,
         TransactionType type,
         Date createdAt
 

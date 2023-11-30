@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public interface HistoryRepository extends JpaRepository<History, UUID> {
     @Query("""
-                SELECT new mardini.project.kaskos.dto.HistoryResponse(h.id, u.name, u.email, h.transactionType, h.createdAt) 
+                SELECT new mardini.project.kaskos.dto.HistoryResponse(h.id, u.name, u.email, h.nominal, h.transactionType, h.createdAt) 
                 FROM History h JOIN User u ON u.email = h.userEmail
                 WHERE (:email IS NULL OR h.userEmail = :email) ORDER BY h.createdAt DESC
             """)
