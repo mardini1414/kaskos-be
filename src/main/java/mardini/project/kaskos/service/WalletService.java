@@ -7,7 +7,7 @@ import mardini.project.kaskos.dto.WalletResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.sql.Date;
+import java.util.Date;
 
 public interface WalletService {
 

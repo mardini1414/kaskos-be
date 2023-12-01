@@ -19,7 +19,7 @@ public interface HistoryRepository extends JpaRepository<History, UUID> {
     Page<HistoryResponse> findAllHistory(String email, Pageable pageable);
 
     @Query("""
-                SELECT new mardini.project.kaskos.dto.HistoryResponse(h.id, u.name, u.email, h.transactionType, h.createdAt) 
+                SELECT new mardini.project.kaskos.dto.HistoryResponse(h.id, u.name, u.email, h.nominal, h.transactionType, h.createdAt) 
                 FROM History h JOIN User u ON u.email = h.userEmail
                 WHERE (:email IS NULL OR h.userEmail = :email) AND DATE(h.createdAt) = :createdAt ORDER BY h.createdAt DESC
             """)
