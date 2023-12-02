@@ -26,7 +26,7 @@ public class OauthSuccessHandler implements AuthenticationSuccessHandler {
         saveUser(oAuth2User);
         String email = oAuth2User.getAttribute("email");
         String token = authService.generateJwt(email);
-        response.sendRedirect("http://localhost:5173/oauth/google?token=" + token);
+        response.sendRedirect("https://kaskos.netlify.app/oauth/google?token=" + token);
     }
 
     private void saveUser(OAuth2User oAuth2User) {
